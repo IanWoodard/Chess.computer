@@ -17,6 +17,7 @@
   <script src="https://www.gstatic.com/firebasejs/8.2.5/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.2.5/firebase-analytics.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.2.5/firebase-firestore.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/ui/4.6.1/firebase-ui-auth.js"></script>
   <script>
     var firebaseConfig = {
       apiKey: "AIzaSyBnsOfeSCNOM4kwf0gKNVmp-h3aOl1W5LU",
@@ -25,10 +26,22 @@
       storageBucket: "chess-computer-d5116.appspot.com",
       messagingSenderId: "134739259080",
       appId: "1:134739259080:web:8d606ba92bc8f19897fffd",
-      measurementId: "G-EZKCN69K7X"
+      measurementId: "G-EZKCN69K7X",
     };
     firebase.initializeApp(firebaseConfig);
     firebase.analytics();
+    var db = firebase.firestore();
+    db.collection("game").add({
+      first: "Ada",
+      last: "Lovelace",
+      born: 1815
+    })
+      .then(function (docRef) {
+        console.log("Document written with ID: ", docRef.id);
+      })
+      .catch(function (error) {
+        console.error("Error adding document: ", error);
+      });
   </script>
   <script type="text/javascript">
     var board = null;
